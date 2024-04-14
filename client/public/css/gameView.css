@@ -1,0 +1,176 @@
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/assets/images/background_blur.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.game.paused canvas, .game.gameOver canvas {
+    animation-play-state: paused !important;
+}
+
+@keyframes scroll {
+    0% {
+        background-position: 0px 0px;
+    }
+    100% {
+        background-position: 100% 0px;
+    }
+}
+
+.viewContainer > .game > button {
+    position: fixed;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.viewContainer > .game > .overlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.25s;
+}
+
+.viewContainer > .game.paused > .overlay, 
+.viewContainer > .game.gameOver > .overlay,
+.viewContainer > .game.paused > .overlay > .menu#pause,
+.viewContainer > .game.gameOver > .overlay > .menu#gameOver {
+    display: flex;
+    flex-direction: column;
+}
+
+.viewContainer > .game > .overlay > .menu {
+    display: none;
+    padding: 20px;
+    gap: 0;
+    left: 0;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    min-width: 200px;
+}
+
+.viewContainer > .game .ath {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}z  q
+
+.viewContainer > .game .ath span {
+    text-shadow: 
+        -2px -2px 0 #000,  
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000; 
+    color: #fff;
+}
+
+.viewContainer > .game.loading .ath {
+    display: none;
+}
+
+.viewContainer > .game.paused .ath, .viewContainer > .game.gameOver .ath {
+    display: none;
+}
+
+.bar-container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 200px;
+    height: 10px;
+    background: #ddd;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: relative;
+    outline: 2px solid #000;
+    border-radius: 2px;
+    margin-top: 5px;
+  }
+
+.bar-container img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    position: absolute;
+    top: -10px;
+    left: -5px;
+    z-index: 2;
+  }
+
+  .bar {
+    background: #ff1313;
+    width: 100%;
+    height: 10px;
+    position: relative;
+    border-radius: 2px;
+    transition: width .5s linear;
+  }
+
+.bar.orange {
+    background: #e2b728;
+}
+
+.difficulty {
+    display: flex;
+    border: 3px solid var(--primary-color);
+    border-radius: 3px;
+    padding: 5px;
+    gap: 10px;
+}
+
+.difficulty > button {
+    font-family: 'Press Start 2p';
+    font-size: .8em;
+    padding: 5px 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.difficulty > button.active, .difficulty > button:hover {
+    background: var(--primary-color);
+    color: var(--surface-color);
+}
+
+.viewContainer > .game canvas {
+    max-width: 95%;
+    max-height: 95%;
+    height: 100%;
+    outline: 4px solid var(--primary-color);
+    outline-style: dashed;
+    background: url('/assets/images/background_loop.png') no-repeat center center fixed;
+    background-size: cover;
+    animation: scroll 10s linear infinite;
+    animation-play-state: running;
+}
+
+.ath-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.ath-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
